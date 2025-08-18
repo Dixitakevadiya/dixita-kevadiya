@@ -1,0 +1,29 @@
+<div class="grid_wrapper">
+    <div class="container">
+        {% if section.settings.title != blank %}
+        <h2 class="title">{{ section.settings.title }}</h2>
+        {% endif %}
+        <div class="grid_main_list">
+            <div class="grid_inner">
+                <img src="">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "product_list",
+            "id": "product",
+            "label": "Product List"
+        }
+    ]
+}
+{% endschema %}
