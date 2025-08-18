@@ -1,0 +1,14 @@
+.grid_main_list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid_inner {
+    flex: 0 0 30%;
+    max-width: 30%;
+    padding: 10px;
+}
+
+.grid_inner img {
+    width: 100%;
+}
