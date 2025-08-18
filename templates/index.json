@@ -92,11 +92,22 @@
           "classic-varsity-top"
         ]
       }
+    },
+    "new_banner_bwhbeA": {
+      "type": "new-banner",
+      "name": "New Banner",
+      "settings": {
+        "title": "",
+        "desc": "",
+        "btn_text": "",
+        "btn_url": ""
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
+    "new_banner_bwhbeA",
     "new_grid_NJWjiE"
   ]
 }
