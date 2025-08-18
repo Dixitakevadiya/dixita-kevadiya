@@ -12,7 +12,7 @@
             {% endif %}
         </div>
         <div class="banner_img">
-            <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.title }}">
+            <img src="{{ section.settings.img | img_url: 'master' }}" alt="{{ product.title }}">
         </div>
     </div>
 </div>
@@ -21,6 +21,11 @@
 {
     "name": "New Banner",
     "settings": [
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+        },
         {
             "type": "text",
             "id": "title",
