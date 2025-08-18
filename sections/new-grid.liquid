@@ -7,7 +7,7 @@
             {% assign product_list  = section.settings.product %}
             {% for product in product_list %}
             <div class="grid_inner">
-                {{ product.title }}
+                <img src="{{ product.featured_image.src | img_utl: 'master' }}" alt="{{ product.title }}">
             </div>
             {% endfor %}
         </div>
