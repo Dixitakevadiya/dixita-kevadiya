@@ -1,5 +1,8 @@
 <div class="banner_wrapper">
     <div class="container">
+        <div class="banner_img">
+            <img src="{{ section.settings.img | img_url: 'master' }}" alt="{{ section.settings.img.alt }}">
+        </div>
         <div class="banner_content">
             {% if section.settings.title != blank %}
             <h2 class="title">{{ section.settings.title }}</h2>
@@ -10,9 +13,6 @@
             </p>
             <a href="{{ section.settings.btn_url | default: '#' }}">{{ section.settings.btn_text }}</a>
             {% endif %}
-        </div>
-        <div class="banner_img">
-            <img src="{{ section.settings.img | img_url: 'master' }}" alt="{{ product.title }}">
         </div>
     </div>
 </div>
