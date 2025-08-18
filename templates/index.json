@@ -78,6 +78,16 @@
         "padding_bottom": 36
       }
     },
+    "new_banner_bwhbeA": {
+      "type": "new-banner",
+      "name": "New Banner",
+      "settings": {
+        "title": "The Gift Guide",
+        "desc": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "btn_text": "Shop Now",
+        "btn_url": ""
+      }
+    },
     "new_grid_NJWjiE": {
       "type": "new-grid",
       "name": "Product Grid",
@@ -91,16 +101,6 @@
           "dark-denim-top",
           "classic-varsity-top"
         ]
-      }
-    },
-    "new_banner_bwhbeA": {
-      "type": "new-banner",
-      "name": "New Banner",
-      "settings": {
-        "title": "",
-        "desc": "",
-        "btn_text": "",
-        "btn_url": ""
       }
     }
   },
