@@ -1,3 +1,35 @@
+.banner_img {
+    position: relative;
+}
+
+.banner_content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 460px;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.banner_img img {
+    width: 100%;
+}
+
+.banner_content img {
+    width: 25px;
+}
+
+h2.title {font-size: 70px;margin-bottom: 70px;}
+
+p.description {
+    font-size: 20px;
+    line-height: 140%;
+}
+
 .grid_main_list {
     display: flex;
     flex-wrap: wrap;
