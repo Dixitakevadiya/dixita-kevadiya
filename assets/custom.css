@@ -5,7 +5,7 @@
 .banner_content {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: auto;
     width: 460px;
 }
 
