@@ -1,6 +1,7 @@
 .grid_main_list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .grid_inner {
