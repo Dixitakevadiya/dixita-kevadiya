@@ -4,14 +4,16 @@
             {% if section.settings.title != blank %}
             <h2 class="title">{{ section.settings.title }}</h2>
             {% endif %}
+            {% if section.settings.desc != blank %}
             <p class="description">
-                Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.
+                {{ section.settings.desc }}
             </p>
+            <a href="{{ section.settings.btn_url | default: '#' }}">{{ section.settings.btn_text }}</a>
+            {% endif %}
         </div>
         <div class="banner_img">
             <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.title }}">
         </div>
-        <a href="/">Shop Now </a>
     </div>
 </div>
 
@@ -25,9 +27,9 @@
             "label": "Title"
         },
         {
-            "type": "product_list",
-            "id": "product",
-            "label": "Product List"
+            "type": "textarea",
+            "id": "desc",
+            "label": "Description"
         }
     ],
     "presets": [
