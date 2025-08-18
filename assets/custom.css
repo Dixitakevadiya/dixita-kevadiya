@@ -6,7 +6,7 @@
 .grid_inner {
     flex: 0 0 30%;
     max-width: 30%;
-    padding: 10px;
+    margin: 0 auto;
 }
 
 .grid_inner img {
