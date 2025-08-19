@@ -22,7 +22,6 @@
     },
     "new_grid_NJWjiE": {
       "type": "new-grid",
-      "disabled": true,
       "name": "Product Grid",
       "settings": {
         "title": "Tisso vison in the wild",
@@ -35,27 +34,10 @@
           "classic-varsity-top"
         ]
       }
-    },
-    "custom_grid_yhdcWj": {
-      "type": "custom-grid",
-      "name": "Custom Product Grid (From Scratch)",
-      "settings": {
-        "title": "Tisso vison in the wild",
-        "products": [
-          "blue-silk-tuxedo",
-          "chequered-red-shirt",
-          "classic-leather-jacket",
-          "classic-varsity-top",
-          "floral-white-top",
-          "dark-denim-top"
-        ],
-        "gift_product": ""
-      }
     }
   },
   "order": [
     "new_banner_bwhbeA",
-    "new_grid_NJWjiE",
-    "custom_grid_yhdcWj"
+    "new_grid_NJWjiE"
   ]
 }
