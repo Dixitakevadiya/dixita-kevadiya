@@ -68,8 +68,26 @@
     if (focusTrapEls.length) focusTrapEls[0].focus();
     modal.addEventListener('keydown', trapTab);
   }
+
+  function initProductTiles() {
+    $$('.custom-grid').forEach(section => {
+      const jacketHandle = section?.dataset?.autoAddJacketHandle || '';
+      $$('.custom-product-grid', section).forEach(tile => {
+        tile.addEventListener('click', (e) => {
+          e.preventDefault();
+          const handle = tile.getAttribute('data-handle');
+          if (handle) openProductPopupByHandle(handle, jacketHandle);
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initModal();
+    initProductTiles();
+  });
  
- });
+})();
 
 </script>
 
