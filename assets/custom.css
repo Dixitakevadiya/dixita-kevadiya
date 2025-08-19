@@ -25,7 +25,17 @@ h2.title {
 .banner_content img {
     width: 25px;
 }
-
+.mob_only {
+      display: none;
+  }
+@media (max-width: 767px){
+  .desktop_only {
+      display: none;
+  }
+  .mob_only {
+      display: block;
+  }
+}
 h2.title {
     font-size: 70px;
     margin-bottom: 70px;
