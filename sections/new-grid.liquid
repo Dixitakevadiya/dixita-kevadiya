@@ -13,7 +13,26 @@
         </div>
     </div>
 </div>
-
+<div id="product-modal" class="custom_modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal_dialog" role="document">
+      <header class="modal_header">
+        <button class="modal_close" aria-label="Close">&times;</button>
+      </header>
+      <div class="modal_content_popup">
+        <div class="modal_image"></div>
+        <div class="modal_meta">
+          <div class="modal_title"></div>
+           <div class="js-modal-price modal_price"></div>
+          <p class="js-modal-desc"></p>
+        </div>
+      </div>
+      <div class="modal_meta">         
+          <div class="js-modal-options"></div>
+        </div>
+      <footer class="modal_footer">
+        <button class="btn btn--primary js-modal-add">ADD TO CART</button>
+      </footer>
+    </div>
 {% schema %}
 {
     "name": "Product Grid",
