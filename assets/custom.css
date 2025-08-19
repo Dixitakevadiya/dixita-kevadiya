@@ -8,12 +8,11 @@
     left: auto;
     width: 460px;
 }
-
 .container {
     max-width: 1440px;
     margin: 0 auto;
     width: 100%;
-}
+} 
 h2.title {
     font-size: 70px;
     margin-bottom: 0;
