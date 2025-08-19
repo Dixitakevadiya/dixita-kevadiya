@@ -36,7 +36,7 @@
 <script>
 (function () {
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $ = (sel, ctx = document) => ctx.querySelector(sel); 
 
   let modal, modalDialog, modalCloseBtn, modalTitle, modalImage, modalDesc, modalPrice, customModaloptionsWrap, modalAddBtn;
   let activeProduct = null;          
@@ -44,7 +44,7 @@
   let autoAddJacketHandle = null;    
   let focusTrapEls = [];
 
-  // modal load init function when page load 
+  // modal load init function when page load      
   function initModal() {
     modal = $('#product-modal');
     if (!modal) return;
@@ -59,9 +59,9 @@
 
     modalCloseBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('modal--open')) closeModal(); });
-  }
-
+    document.add('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('modal--open')) closeModal(); });
+  } 
+ 
  });
 
 </script>
