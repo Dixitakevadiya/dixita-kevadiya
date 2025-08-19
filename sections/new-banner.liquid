@@ -1,5 +1,6 @@
 <div class="banner_wrapper">
     <div class="container"> 
+        <div class="banner_wrapper_inner">
         {% if section.settings.img != blank %}
         <div class="banner_img">
             <img src="{{ section.settings.img | img_url: 'master' }}" alt="{{ section.settings.img.alt }}" class="desktop_only">
@@ -20,6 +21,7 @@
                 <img src="https://cdn.shopify.com/s/files/1/0694/0341/0476/files/arrow.png?v=1755533411" alt="arrow">
             </a>
             {% endif %}
+        </div>
         </div>
     </div>
 </div>
