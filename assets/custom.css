@@ -35,6 +35,13 @@ h2.title {
   .mob_only {
       display: block;
   }
+  .banner_wrapper_inner {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.banner_wrapper_inner .banner_content {
+    position: unset;
+}
 }
 h2.title {
     font-size: 70px;
