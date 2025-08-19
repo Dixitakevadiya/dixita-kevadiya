@@ -35,8 +35,32 @@
     </div>
 <script>
 (function () {
-  const $$ = (sel, ctx = document) => Array.from(ctx.querySelector(sel));
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
+
+  let modal, modalDialog, modalCloseBtn, modalTitle, modalImage, modalDesc, modalPrice, customModaloptionsWrap, modalAddBtn;
+  let activeProduct = null;          
+  let activeVariantId = null;        
+  let autoAddJacketHandle = null;    
+  let focusTrapEls = [];
+
+  // modal load init function when page load 
+  function initModal() {
+    modal = $('#product-modal');
+    if (!modal) return;
+    modalDialog = $('.modal_dialog', modal);
+    modalCloseBtn = $('.modal_close', modal);
+    modalTitle = $('.modal_title', modal);
+    modalImage = $('.modal_image', modal);
+    modalDesc = $('.js-modal-desc', modal);
+    modalPrice = $('.js-modal-price', modal);
+    customModaloptionsWrap = $('.js-modal-options', modal);
+    modalAddBtn = $('.js-modal-add', modal);
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('modal--open')) closeModal(); });
+  }
 
  });
 
