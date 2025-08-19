@@ -1,9 +1,11 @@
 <div class="banner_wrapper">
     <div class="container"> 
+        {% if section.settings.img != blank %}
         <div class="banner_img">
             <img src="{{ section.settings.img | img_url: 'master' }}" alt="{{ section.settings.img.alt }}" class="desktop_only">
             <img src="{{ section.settings.mob_img | img_url: 'master' }}" alt="{{ section.settings.mob_img.alt }}" class="mob_only">
         </div>
+        {% endif %}
         <div class="banner_content">
             {% if section.settings.title != blank %}      
             <h2 class="title">{{ section.settings.title }}</h2>
@@ -12,7 +14,7 @@
             <p class="description"> 
                 {{ section.settings.desc }}           
             </p>
-            <a href="{{ section.settings.btn_url | default: '#' }}" class="btn_shop">{{ section.settings.btn_text }} 
+            <a href="{{ section.settings.btn_url | default: '#' }}" class="shop_btn">{{ section.settings.btn_text }} 
                 <img src="https://cdn.shopify.com/s/files/1/0694/0341/0476/files/arrow.png?v=1755533411" alt="arrow">
             </a>
             {% endif %}
