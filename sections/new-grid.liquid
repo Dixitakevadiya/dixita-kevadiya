@@ -61,6 +61,13 @@
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.add('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('modal--open')) closeModal(); });
   } 
+  function openModal() {
+    modal.classList.add('modal--open');
+    // focus trap
+    focusTrapEls = $$('a, button, select, input, [tabindex]:not([tabindex="-1"])', modalDialog).filter(el => !el.disabled);
+    if (focusTrapEls.length) focusTrapEls[0].focus();
+    modal.addEventListener('keydown', trapTab);
+  }
  
  });
 
