@@ -1,0 +1,92 @@
+{% comment %}
+  Custom Product Grid (from scratch)
+  - Exactly 6 product tiles (selectable in customizer).
+  - Clicking a tile opens a vanilla JS modal with dynamic variants & Add to Cart.
+  - If selected options Black & Medium: auto-add the Bonus Product ("Soft Winter Jacket") from settings.
+{% endcomment %}
+
+<section class="custom-grid" data-auto-add-jacket-handle="{{ section.settings.gift_product | default: '' | handle }}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="custom-grid_title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.products != blank %}
+    <div class="custom-inner-grid">
+      {% for product in section.settings.products %}
+        {% if product != blank %}
+          {% assign product_obj = product %}
+          {% if product_obj %}
+            <div class="custom-product-grid" data-handle="{{ product_obj.handle }}" aria-label="{{ product_obj.title }}">
+              <div class="custom-product-grid_image">
+                {% if product_obj.featured_image %}
+                  <img src="{{ product_obj.featured_image | image_url: width: 600 }}" alt="{{ product_obj.title | escape }}">
+                {% else %}
+                  <div style="width:100%;height:100%;background:#eee;"></div>
+                {% endif %}
+              </div>
+              <div class="custom-product-grid_body">
+                <h3 class="custom-product-grid_title">{{ product_obj.title }}</h3>
+                <div class="custom-product-grid_price">
+                  {% if product_obj.compare_at_price_max > product_obj.price %}
+                    <span>{{ product_obj.price | money }}</span>
+                    <s style="color:#999; margin-left:6px;">{{ product_obj.compare_at_price_max | money }}</s>
+                  {% else %}
+                    <span>{{ product_obj.price | money }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  {%- comment -%}
+   modal for show product details.
+  {%- endcomment -%}
+  <div id="product-modal" class="custom_modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal_dialog" role="document">
+      <header class="modal_header">
+        <button class="modal_close" aria-label="Close">&times;</button>
+      </header>
+      <div class="modal_content_popup">
+        <div class="modal_image"></div>
+        <div class="modal_meta">
+          <div class="modal_title"></div>
+           <div class="js-modal-price modal_price"></div>
+          <p class="js-modal-desc"></p>
+        </div>
+      </div>
+      <div class="modal_meta">         
+          <div class="js-modal-options"></div>
+        </div>
+      <footer class="modal_footer">
+        <button class="btn btn--primary js-modal-add">ADD TO CART</button>
+      </footer>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Product Grid",
+  "class": "section-custom-grid",
+  "settings": [
+    { "type": "text", 
+      "id": "title", 
+      "label": "Title"
+    },
+    { "type": "product_list", 
+      "id": "products", 
+      "label": "Products list" 
+    },
+    { "type": "product", 
+      "id": "gift_product", 
+      "label": "Gift product to auto-add" 
+    }
+  ],
+  "presets": [{ "name": "Custom Product Grid (From Scratch)" }]
+}
+{% endschema %}
