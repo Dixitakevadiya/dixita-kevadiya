@@ -3,7 +3,9 @@
         {% if section.settings.img != blank %}
         <div class="banner_img">
             <img src="{{ section.settings.img | img_url: 'master' }}" alt="{{ section.settings.img.alt }}" class="desktop_only">
+            {% if section.settings.mob_img != blank %}
             <img src="{{ section.settings.mob_img | img_url: 'master' }}" alt="{{ section.settings.mob_img.alt }}" class="mob_only">
+            {% endif %}
         </div>
         {% endif %}
         <div class="banner_content">
