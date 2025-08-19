@@ -90,3 +90,242 @@
   "presets": [{ "name": "Custom Product Grid (From Scratch)" }]
 }
 {% endschema %}
+<script>
+    // IIFE function default load
+(function () {
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+
+  let modal, modalDialog, modalCloseBtn, modalTitle, modalImage, modalDesc, modalPrice, customModaloptionsWrap, modalAddBtn;
+  let activeProduct = null;          
+  let activeVariantId = null;        
+  let autoAddJacketHandle = null;    
+  let focusTrapEls = [];
+
+  // modal load init function when page load 
+  function initModal() {
+    modal = $('#product-modal');
+    if (!modal) return;
+    modalDialog = $('.modal_dialog', modal);
+    modalCloseBtn = $('.modal_close', modal);
+    modalTitle = $('.modal_title', modal);
+    modalImage = $('.modal_image', modal);
+    modalDesc = $('.js-modal-desc', modal);
+    modalPrice = $('.js-modal-price', modal);
+    customModaloptionsWrap = $('.js-modal-options', modal);
+    modalAddBtn = $('.js-modal-add', modal);
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('modal--open')) closeModal(); });
+  }
+
+  function openModal() {
+    modal.classList.add('modal--open');
+    // focus trap
+    focusTrapEls = $$('a, button, select, input, [tabindex]:not([tabindex="-1"])', modalDialog).filter(el => !el.disabled);
+    if (focusTrapEls.length) focusTrapEls[0].focus();
+    modal.addEventListener('keydown', trapTab);
+  }
+  function closeModal() {
+    modal.classList.remove('modal--open');
+    activeProduct = null;
+    activeVariantId = null;
+    modal.removeEventListener('keydown', trapTab);
+  }
+  function trapTab(e) {
+    if (e.key !== 'Tab') return;
+    const first = focusTrapEls[0], last = focusTrapEls[focusTrapEls.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  // ----- shopify store money -----
+  const money = (cents, currency = (window.Shopify && Shopify.currency && Shopify.currency.active) || 'USD') => {
+    const val = (cents || 0) / 100;
+    try { return new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(val); }
+    catch { return `$${val.toFixed(2)}`; }
+  };
+
+  async function fetchJSON(url, opts) {
+    const res = await fetch(url, opts);
+    if (!res.ok) throw new Error(`Request failed ${res.status}`);
+    return res.json();
+  }
+
+function buildOptions(product) {
+  customModaloptionsWrap.innerHTML = '';
+  if (!product.options || !product.variants) return;
+
+  product.options.forEach((optName, idx) => {
+    const group = document.createElement('div');
+    group.className = 'option-group';
+    if (optName.name.toLowerCase() === 'color') {
+      // Render Color as buttons
+      group.innerHTML = `<label>${optName.name}</label><div class="color-options"></div>`;
+      const btnWrap = $('.color-options', group);
+      const values = [...new Set(product.variants.map(v => v.options[idx]))];
+
+      values.forEach(v => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-btn';
+        btn.textContent = v;
+        btn.dataset.optionValue = v;
+        btn.dataset.optionIndex = idx;
+
+        btn.addEventListener('click', () => {
+          // clear active
+          $$(`[data-option-index="${idx}"]`, group).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          onOptionChange();
+        });
+
+        btnWrap.appendChild(btn);
+      });
+      customModaloptionsWrap.appendChild(group);
+   } else {
+      // Render other options as dropdown
+      group.innerHTML = `
+        <label>${optName.name}</label>
+        <select data-option-index="${idx}"></select>
+      `;
+      const select = $('select', group);
+
+      if (optName.name.toLowerCase() === 'size') {
+        const placeholder = document.createElement('option');
+        placeholder.value = "";
+        placeholder.textContent = `Choose your ${optName.name}`;
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        select.appendChild(placeholder);
+      }
+
+      const values = [...new Set(product.variants.map(v => v.options[idx]))];
+      values.forEach(v => {
+        const option = document.createElement('option');
+        option.value = v;
+        option.textContent = v;
+        select.appendChild(option);
+      });
+
+      select.addEventListener('change', onOptionChange);
+      customModaloptionsWrap.appendChild(group);
+    }
+
+  });
+
+  setVariantFromSelects(product);
+}
+
+  function onOptionChange() {
+    setVariantFromSelects(activeProduct);
+  }
+
+function setVariantFromSelects(product) {
+  const selectedValues = [];
+
+  product.options.forEach((optName, idx) => {
+    const btn = $(`.option-btn.active[data-option-index="${idx}"]`, customModaloptionsWrap);
+    if (btn) {
+      selectedValues.push(btn.dataset.optionValue);
+    } else {
+      const sel = $(`[data-option-index="${idx}"]`, customModaloptionsWrap);
+      if (sel) selectedValues.push(sel.value);
+    }
+  });
+
+  const variant_match = product.variants.find(v => v.options.every((val, i) => val === selectedValues[i]));
+  if (variant_match) {
+    activeVariantId = variant_match.id;
+    modalPrice.textContent = money(variant_match.price);
+    modalAddBtn.disabled = !variant_match.available;
+    modalAddBtn.textContent = variant_match.available ? 'ADD TO CART' : 'Sold Out';
+  } else {
+    activeVariantId = null;
+    modalPrice.textContent = money(product.price);
+    modalAddBtn.disabled = true;
+    modalAddBtn.textContent = 'Unavailable';
+  }
+}
+
+
+  async function openProductPopupByHandle(handle, jacketHandleFromSection) {
+    autoAddJacketHandle = jacketHandleFromSection || null;
+    const product = await fetchJSON(`/products/${handle}.js`);
+    activeProduct = product;
+    console.log('product: ', product);
+    
+    modalTitle.textContent = product.title;
+    const cleanDesc = product.description?.replace(/<[^>]*>?/gm, '').trim() || '';
+    if(cleanDesc){
+    const shortDesc = cleanDesc.split(' ').slice(0, 30).join(' ') + '...'; // ~3–4 lines
+    modalDesc.textContent = shortDesc;
+    }
+    modalImage.innerHTML = product.images?.length
+      ? `<img src="${product.images[0]}" alt="${product.title}">`
+      : `<div style="aspect-ratio:1/1;"></div>`;
+    modalPrice.textContent = money(product.price);
+    buildOptions(product);
+
+    modalAddBtn.onclick = onAddToCartClicked;
+    openModal();
+  }
+
+  // Add to cart from grid popup
+  async function onAddToCartClicked() {
+    if (!activeProduct || !activeVariantId) return;
+
+    await fetchJSON('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ id: activeVariantId, quantity: 1 })
+    });
+
+    const selects = $$('[data-option-index]', customModaloptionsWrap);
+    const selected = selects.map(s => s.value.toLowerCase());
+
+    const hasBlack = selected.includes('black');
+    const hasMedium = selected.includes('medium');
+
+    // check gift product condition
+    if (hasBlack && hasMedium && autoAddJacketHandle) {
+      try {
+        const jacket = await fetchJSON(`/products/${autoAddJacketHandle}.js`);
+        const jacketVariant = jacket.variants.find(v => v.available) || jacket.variants[0];
+        if (jacketVariant) {
+          await fetchJSON('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ id: jacketVariant.id, quantity: 1 })
+          });
+        }
+      } catch (e) {
+        console.warn('Auto-add jacket failed:', e);
+      }
+    }
+
+    modalAddBtn.textContent = 'Added!';
+    setTimeout(() => { closeModal(); location.reload(); }, 500);
+  }
+
+  function initProductTiles() {
+    $$('.custom-grid').forEach(section => {
+      const jacketHandle = section?.dataset?.autoAddJacketHandle || '';
+      $$('.custom-product-grid', section).forEach(tile => {
+        tile.addEventListener('click', (e) => {
+          e.preventDefault();
+          const handle = tile.getAttribute('data-handle');
+          if (handle) openProductPopupByHandle(handle, jacketHandle);
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initModal();
+    initProductTiles();
+  });
+})();
+
+</script>
