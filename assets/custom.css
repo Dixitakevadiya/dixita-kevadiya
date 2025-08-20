@@ -31,7 +31,7 @@ img, svg{
 .modal_image img {
     aspect-ratio: 16 / 18.67;
 }
-.banner_content_wpr {
+.banner_content {
     position: absolute;
     bottom: 51px;
     width: 100%;
