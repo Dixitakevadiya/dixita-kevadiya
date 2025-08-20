@@ -550,6 +550,9 @@ button.js-modal-add {
         font-size: 24px;
         margin: 0 0 20px;
     }
+    .hero_bottom p {
+        font-size: 14px;
+    }
 }
 @media (max-width: 767px) {
 }
