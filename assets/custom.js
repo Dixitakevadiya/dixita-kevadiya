@@ -145,7 +145,7 @@ function setVariantFromSelects(product,option_change ) {
     } else {
       const sel = $(`[data-option-index="${idx}"]`, customModaloptionsWrap);
       console.log('sel.value: ', sel.value)
-      if (sel) selectedValues.push(sel.value);
+      if (sel.value != '') selectedValues.push(sel.value);
     }
   });
 console.log('selectedValues: ', selectedValues)
