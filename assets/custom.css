@@ -8,9 +8,10 @@ img, svg{
   display: block;
 }
 .container {
-    width: max(1440px, calc(92.99vw + 32px));
+    max-width: max(1440px, calc(92.99vw + 32px));
     margin: 0 auto;
     padding: 0 16px;
+    width: 100%;
 }
 .banner_img {
     position: relative;
