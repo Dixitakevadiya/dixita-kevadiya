@@ -498,6 +498,12 @@ img, svg{
     .banner_inner {
         padding-top: 157px;
     }
+    .banner_content {
+        max-width: 100%;
+        text-align: center;
+        left: 0;
+        padding: 0 16px;
+    }
 }
 @media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
