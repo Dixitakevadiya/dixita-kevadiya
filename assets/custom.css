@@ -503,6 +503,7 @@ img, svg{
         text-align: center;
         left: 0;
         padding: 0 16px;
+        bottom: 73px;
     }
 }
 @media (max-width: 767px) {
