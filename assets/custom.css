@@ -161,6 +161,12 @@ img, svg{
     height: 13px;
     width: 18px;
 }
+.toggle_menu a .toggle_close {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    scale: 0;
+}
 
 
 /* ========== Custom Theme Styles (no Dawn components) ========== */
