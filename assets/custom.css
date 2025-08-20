@@ -70,6 +70,9 @@ img, svg{
     position: relative;
     overflow: hidden;
 }
+.custom_primary_btn:before{
+  content: "";
+}
 .custom_primary_btn:hover{
   background: transparent;
   border-color: #000;
