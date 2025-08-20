@@ -527,13 +527,11 @@ button.js-modal-add {
     .banner_content {
         max-width: 100%;
         text-align: center;
-        left: 0;
-        padding: 49px 16px 39px;
-        bottom: 34px;
-        height: calc(100%  - 34px);
+        padding: 49px 16px 12px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: static;
     }
     .banner_content .title {
         font-size: 30px;
