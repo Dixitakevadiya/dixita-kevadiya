@@ -100,9 +100,50 @@
       "label": "Gift product to auto-add" 
     }
   ],
+  "blocks": [
+    {
+      "type": "product_block",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select product"
+        },
+        {
+          "type": "range",
+          "id": "overlay_left",
+          "label": "Overlay Left Position",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "overlay_top",
+          "label": "Overlay Top Position",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 1
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
   "presets": [{ "name": "Custom Product Grid (From Scratch)" }]
 }
 {% endschema %}
+
+
+
+
+
+
+
 <script>
     // IIFE function default load
 (function () {
