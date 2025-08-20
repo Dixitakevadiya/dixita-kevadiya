@@ -454,7 +454,10 @@ img, svg{
     flex: 1;
     padding: 0 10px;
 }
-
+.js-modal-options {
+    display: flex;
+    flex-direction: column-reverse;
+}
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
   .custom-banner_inner { grid-template-columns: 1fr; }
