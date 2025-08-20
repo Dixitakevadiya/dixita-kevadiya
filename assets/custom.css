@@ -588,10 +588,11 @@ button.js-modal-add {
         left: 0;
         right: 0;
         text-align: center;
-        bottom: 39px;
+        bottom: 34px;
         z-index: 1;
         padding: 0 16px;
         display: block;
+        margin: 0 0 39px;
     }
 }
 @media (max-width: 767px) {
