@@ -266,7 +266,6 @@ img, width{
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    align-items: flex-end;
 }
 .modal_image {
     max-width: 120px;
@@ -274,6 +273,9 @@ img, width{
 }
 .modal_meta {
     flex: 1;
+}
+.modal_content_popup .modal_meta {
+    padding-top: 13px;
 }
 .modal_meta p {
     font-weight: 300;
