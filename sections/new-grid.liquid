@@ -1,42 +1,113 @@
-<div class="grid_wrapper">
-    <div class="container">
-        {% if section.settings.title != blank %}
-        <h2 class="title">{{ section.settings.title }}</h2>
-        {% endif %}
-        <div class="grid_main_list">
-            {% assign product_list  = section.settings.product %}
-            {% for product in product_list %}
-            <div class="grid_inner">
-                <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.title }}">
+{% comment %}
+  Custom Product Grid (from scratch)
+  - Exactly 6 product tiles (selectable in customizer).
+  - Clicking a tile opens a vanilla JS modal with dynamic variants & Add to Cart.
+  - If selected options Black & Medium: auto-add the Bonus Product ("Soft Winter Jacket") from settings.
+{% endcomment %}
+
+<section class="custom-grid" data-auto-add-jacket-handle="{{ section.settings.gift_product | default: '' | handle }}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="custom-grid_title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.products != blank %}
+    <div class="custom-inner-grid">
+      {% for product in section.settings.products %}
+        {% if product != blank %}
+          {% assign product_obj = product %}
+          {% if product_obj %}
+            <div class="custom-product-grid" data-handle="{{ product_obj.handle }}" aria-label="{{ product_obj.title }}">
+              <div class="custom-product-grid_image">
+                {% if product_obj.featured_image %}
+                  <img src="{{ product_obj.featured_image | image_url: width: 600 }}" alt="{{ product_obj.title | escape }}">
+                {% else %}
+                  <div style="width:100%;height:100%;background:#eee;"></div>
+                {% endif %}
+              </div>
+              {% comment %} <div class="custom-product-grid_body">
+                <h3 class="custom-product-grid_title">{{ product_obj.title }}</h3>
+                <div class="custom-product-grid_price">
+                  {% if product_obj.compare_at_price_max > product_obj.price %}
+                    <span>{{ product_obj.price | money }}</span>
+                    <s style="color:#999; margin-left:6px;">{{ product_obj.compare_at_price_max | money }}</s>
+                  {% else %}
+                    <span>{{ product_obj.price | money }}</span>
+                  {% endif %}
+                </div>
+              </div> {% endcomment %}
             </div>
-            {% endfor %}
-        </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
     </div>
-</div>
-<div id="product-modal" class="custom_modal" aria-hidden="true" role="dialog" aria-modal="true">
+    {% endif %}
+  </div>
+
+  {%- comment -%}
+   modal for show product details.
+  {%- endcomment -%}
+  <div id="product-modal" class="custom_modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal_dialog" role="document">
       <header class="modal_header">
-        <button class="modal_close" aria-label="Close">&times;</button>
+        <button class="modal_close" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.03784 4.94354L13.5231 13.4288" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+            <path d="M5.03784 13.4285L13.5231 4.94325" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+            </svg>
+        </button>
       </header>
-      <div class="modal_content_popup">
-        <div class="modal_image"></div>
-        <div class="modal_meta">
-          <div class="modal_title"></div>
-           <div class="js-modal-price modal_price"></div>
-          <p class="js-modal-desc"></p>
+      <div class="modal_content_popup_wpr">
+        <div class="modal_content_popup">
+          <div class="modal_image"></div>
+          <div class="modal_meta">
+            <div class="modal_title"></div>
+             <div class="js-modal-price modal_price"></div>
+            <p class="js-modal-desc"></p>
+          </div>
         </div>
       </div>
       <div class="modal_meta">         
           <div class="js-modal-options"></div>
         </div>
       <footer class="modal_footer">
-        <button class="btn btn--primary js-modal-add">ADD TO CART</button> 
+        <button class="btn btn--primary js-modal-add">ADD TO CART
+          <span>
+            <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </button>
       </footer>
     </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Product Grid",
+  "class": "section-custom-grid",
+  "settings": [
+    { "type": "text", 
+      "id": "title", 
+      "label": "Title"
+    },
+    { "type": "product_list", 
+      "id": "products", 
+      "label": "Products list" 
+    },
+    { "type": "product", 
+      "id": "gift_product", 
+      "label": "Gift product to auto-add" 
+    }
+  ],
+  "presets": [{ "name": "Custom Product Grid (From Scratch)" }]
+}
+{% endschema %}
 <script>
+    // IIFE function default load
 (function () {
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const $ = (sel, ctx = document) => ctx.querySelector(sel); 
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
 
   let modal, modalDialog, modalCloseBtn, modalTitle, modalImage, modalDesc, modalPrice, customModaloptionsWrap, modalAddBtn;
   let activeProduct = null;          
@@ -44,7 +115,7 @@
   let autoAddJacketHandle = null;    
   let focusTrapEls = [];
 
-  // modal load init function when page load      
+  // modal load init function when page load 
   function initModal() {
     modal = $('#product-modal');
     if (!modal) return;
@@ -59,14 +130,196 @@
 
     modalCloseBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.add('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('modal--open')) closeModal(); });
-  } 
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('modal--open')) closeModal(); });
+  }
+
   function openModal() {
     modal.classList.add('modal--open');
     // focus trap
     focusTrapEls = $$('a, button, select, input, [tabindex]:not([tabindex="-1"])', modalDialog).filter(el => !el.disabled);
     if (focusTrapEls.length) focusTrapEls[0].focus();
     modal.addEventListener('keydown', trapTab);
+  }
+  function closeModal() {
+    modal.classList.remove('modal--open');
+    activeProduct = null;
+    activeVariantId = null;
+    modal.removeEventListener('keydown', trapTab);
+  }
+  function trapTab(e) {
+    if (e.key !== 'Tab') return;
+    const first = focusTrapEls[0], last = focusTrapEls[focusTrapEls.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  // ----- shopify store money -----
+  const money = (cents, currency = (window.Shopify && Shopify.currency && Shopify.currency.active) || 'USD') => {
+    const val = (cents || 0) / 100;
+    try { return new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(val); }
+    catch { return `$${val.toFixed(2)}`; }
+  };
+
+  async function fetchJSON(url, opts) {
+    const res = await fetch(url, opts);
+    if (!res.ok) throw new Error(`Request failed ${res.status}`);
+    return res.json();
+  }
+
+function buildOptions(product) {
+  customModaloptionsWrap.innerHTML = '';
+  if (!product.options || !product.variants) return;
+
+  product.options.forEach((optName, idx) => {
+    const group = document.createElement('div');
+    group.className = 'option-group';
+    if (optName.name.toLowerCase() === 'color') {
+      // Render Color as buttons
+      group.innerHTML = `<label>${optName.name}</label><div class="color-options"></div>`;
+      const btnWrap = $('.color-options', group);
+      const values = [...new Set(product.variants.map(v => v.options[idx]))];
+
+      values.forEach(v => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-btn';
+        btn.textContent = v;
+        btn.dataset.optionValue = v;
+        btn.dataset.optionIndex = idx;
+
+        btn.addEventListener('click', () => {
+          // clear active
+          $$(`[data-option-index="${idx}"]`, group).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          onOptionChange();
+        });
+
+        btnWrap.appendChild(btn);
+      });
+      customModaloptionsWrap.appendChild(group);
+   } else {
+      // Render other options as dropdown
+      group.innerHTML = `
+        <label>${optName.name}</label>
+        <div class="select_wpr"><select data-option-index="${idx}"></select></div>
+      `;
+      const select = $('select', group);
+
+      if (optName.name.toLowerCase() === 'size') {
+        const placeholder = document.createElement('option');
+        placeholder.value = "";
+        placeholder.textContent = `Choose your ${optName.name}`;
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        select.appendChild(placeholder);
+      }
+
+      const values = [...new Set(product.variants.map(v => v.options[idx]))];
+      values.forEach(v => {
+        const option = document.createElement('option');
+        option.value = v;
+        option.textContent = v;
+        select.appendChild(option);
+      });
+
+      select.addEventListener('change', onOptionChange);
+      customModaloptionsWrap.appendChild(group);
+    }
+
+  });
+
+  setVariantFromSelects(product);
+}
+
+  function onOptionChange() {
+    setVariantFromSelects(activeProduct);
+  }
+
+function setVariantFromSelects(product) {
+  const selectedValues = [];
+
+  product.options.forEach((optName, idx) => {
+    const btn = $(`.option-btn.active[data-option-index="${idx}"]`, customModaloptionsWrap);
+    if (btn) {
+      selectedValues.push(btn.dataset.optionValue);
+    } else {
+      const sel = $(`[data-option-index="${idx}"]`, customModaloptionsWrap);
+      if (sel) selectedValues.push(sel.value);
+    }
+  });
+
+  const variant_match = product.variants.find(v => v.options.every((val, i) => val === selectedValues[i]));
+  if (variant_match) {
+    activeVariantId = variant_match.id;
+    modalPrice.textContent = money(variant_match.price);
+    modalAddBtn.disabled = !variant_match.available;
+    modalAddBtn.textContent = variant_match.available ? 'ADD TO CART' : 'Sold Out';
+  } else {
+    activeVariantId = null;
+    modalPrice.textContent = money(product.price);
+    modalAddBtn.disabled = true;
+    modalAddBtn.textContent = 'Unavailable';
+  }
+}
+
+
+  async function openProductPopupByHandle(handle, jacketHandleFromSection) {
+    autoAddJacketHandle = jacketHandleFromSection || null;
+    const product = await fetchJSON(`/products/${handle}.js`);
+    activeProduct = product;
+    console.log('product: ', product);
+    
+    modalTitle.textContent = product.title;
+    const cleanDesc = product.description?.replace(/<[^>]*>?/gm, '').trim() || '';
+    if(cleanDesc){
+    const shortDesc = cleanDesc.split(' ').slice(0, 30).join(' ') + '...'; // ~3–4 lines
+    modalDesc.textContent = shortDesc;
+    }
+    modalImage.innerHTML = product.images?.length
+      ? `<img src="${product.images[0]}" alt="${product.title}">`
+      : `<div style="aspect-ratio:1/1;"></div>`;
+    modalPrice.textContent = money(product.price);
+    buildOptions(product);
+
+    modalAddBtn.onclick = onAddToCartClicked;
+    openModal();
+  }
+
+  // Add to cart from grid popup
+  async function onAddToCartClicked() {
+    if (!activeProduct || !activeVariantId) return;
+
+    await fetchJSON('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ id: activeVariantId, quantity: 1 })
+    });
+
+    const selects = $$('[data-option-index]', customModaloptionsWrap);
+    const selected = selects.map(s => s.value.toLowerCase());
+
+    const hasBlack = selected.includes('black');
+    const hasMedium = selected.includes('medium');
+
+    // check gift product condition
+    if (hasBlack && hasMedium && autoAddJacketHandle) {
+      try {
+        const jacket = await fetchJSON(`/products/${autoAddJacketHandle}.js`);
+        const jacketVariant = jacket.variants.find(v => v.available) || jacket.variants[0];
+        if (jacketVariant) {
+          await fetchJSON('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ id: jacketVariant.id, quantity: 1 })
+          });
+        }
+      } catch (e) {
+        console.warn('Auto-add jacket failed:', e);
+      }
+    }
+
+    modalAddBtn.textContent = 'Added!';
+    setTimeout(() => { closeModal(); location.reload(); }, 500);
   }
 
   function initProductTiles() {
@@ -86,30 +339,6 @@
     initModal();
     initProductTiles();
   });
- 
 })();
 
 </script>
-
-{% schema %}
-{
-    "name": "Product Grid",
-    "settings": [
-        {
-            "type": "text",
-            "id": "title",
-            "label": "Title"
-        },
-        {
-            "type": "product_list",
-            "id": "product",
-            "label": "Product List"
-        }
-    ],
-    "presets": [
-        {
-         "name": "Product Grid"
-        }
-    ]
-}
-{% endschema %}
