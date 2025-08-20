@@ -539,7 +539,7 @@ button.js-modal-add {
         position: static;
     }
     .banner_content .title {
-        font-size: 30px;
+        font-size: clamp(30px,5.2vw,42px);
     }
     .toggle_menu{
       display: block;
