@@ -458,6 +458,9 @@ img, svg{
     display: flex;
     flex-direction: column-reverse;
 }
+button.js-modal-add {
+    max-width: 100%;
+}
 /* ===== Responsive ===== */
 @media (max-width: 1280px){
     .banner_content {
