@@ -334,7 +334,7 @@ function setVariantFromSelects(product,option_change ) {
     body: JSON.stringify({ id: activeVariantId, quantity: 1 })
   });
 
-  // ✅ success → check gift condition
+  //check gift condition
   const selects = $$('[data-option-index]', customModaloptionsWrap);
   const selected = selects.map(el => {
   if (el.tagName === 'SELECT') return el.value.toLowerCase();
@@ -360,23 +360,10 @@ function setVariantFromSelects(product,option_change ) {
     }
   }
 
-  // 3. Publish + render with latest response
-  const startMarker = CartPerformance.createStartingMarker('add:wait-for-subscribers');
-  if (!this.error)
-    publish(PUB_SUB_EVENTS.cartUpdate, {
-      source: 'product-form',
-      productVariantId: activeVariantId,
-      cartData: response,
-    }).then(() => {
-      CartPerformance.measureFromMarker('add:wait-for-subscribers', startMarker);
-    });
-
-  if (cartNotification && typeof cartNotification.renderContents === 'function') {
-    cartNotification.renderContents(response);
-  }
 
   modalAddBtn.textContent = 'Added!';
-  closeModal();
+    setTimeout(() => { closeModal(); location.reload(); }, 500);
+
 }
 
 
