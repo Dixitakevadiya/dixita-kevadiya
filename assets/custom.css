@@ -523,6 +523,7 @@ button.js-modal-add {
     .banner_content .description{
         flex: 1;
         font-size: 16px;
+        margin: 0;
     }
     .banner_content {
         max-width: 100%;
