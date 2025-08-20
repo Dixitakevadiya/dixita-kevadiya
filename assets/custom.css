@@ -67,6 +67,7 @@ img, svg{
     max-width: 220px;
     width: 100%;
     justify-content: center;
+    position: relative;
 }
 .custom_primary_btn:hover{
   background: transparent;
