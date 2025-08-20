@@ -471,6 +471,12 @@ img, svg{
 @media (max-width: 850px){
     .custom-banner_inner { grid-template-columns: 1fr; }
     .modal_content_popup { grid-template-columns: 1fr; }
+    .banner_img .desktop_only {
+        display: none;
+    }
+    .banner_img .mob_only{
+        display: block;
+    }
 }
 @media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
