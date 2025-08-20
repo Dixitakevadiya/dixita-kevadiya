@@ -154,6 +154,9 @@ img, svg{
     padding: 10px 0;
     background: #F5F5F5;
 }
+.toggle_menu{
+  display: none;
+}
 .toggle_menu span {
     display: flex;
     align-items: center;
@@ -167,7 +170,7 @@ img, svg{
     opacity: 0;
     scale: 0;
 }
-.toggle_menu {
+.banner_img .mob_only {
     display: none;
 }
 
