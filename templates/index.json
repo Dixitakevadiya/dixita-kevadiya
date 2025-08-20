@@ -30,14 +30,14 @@
           "settings": {
             "product": "blue-silk-tuxedo",
             "overlay_left": 51,
-            "overlay_top": 25
+            "overlay_top": 59
           }
         },
         "product_block_PXYHFG": {
           "type": "product_block",
           "settings": {
             "product": "chequered-red-shirt",
-            "overlay_left": 14,
+            "overlay_left": 63,
             "overlay_top": 20
           }
         },
@@ -45,7 +45,7 @@
           "type": "product_block",
           "settings": {
             "product": "classic-varsity-top",
-            "overlay_left": 72,
+            "overlay_left": 58,
             "overlay_top": 43
           }
         },
@@ -54,14 +54,14 @@
           "settings": {
             "product": "dark-denim-top",
             "overlay_left": 40,
-            "overlay_top": 38
+            "overlay_top": 51
           }
         },
         "product_block_3XNG8a": {
           "type": "product_block",
           "settings": {
             "product": "led-high-tops",
-            "overlay_left": 33,
+            "overlay_left": 48,
             "overlay_top": 55
           }
         },
