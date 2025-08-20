@@ -154,6 +154,13 @@ img, svg{
     padding: 10px 0;
     background: #F5F5F5;
 }
+.toggle_menu span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 13px;
+    width: 18px;
+}
 
 
 /* ========== Custom Theme Styles (no Dawn components) ========== */
