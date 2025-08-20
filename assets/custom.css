@@ -18,7 +18,7 @@ img, svg{
     padding-top: calc(100dvh - 157px);
     width: 100%;
 }
-.header_logo {
+.header_left {
     width: 25%;
 }
 .banner_img img {
