@@ -237,10 +237,11 @@ function buildOptions(product) {
 }
 
   function onOptionChange() {
-    setVariantFromSelects(activeProduct, true);
+    let option_change = true;
+    setVariantFromSelects(activeProduct, option_change);
   }
 
-function setVariantFromSelects(product) {
+function setVariantFromSelects(product,option_change ) {
   const selectedValues = [];
 
   product.options.forEach((optName, idx) => {
@@ -264,6 +265,10 @@ function setVariantFromSelects(product) {
     modalPrice.textContent = money(product.price);
     modalAddBtn.disabled = true;
     modalAddBtn.textContent = 'Unavailable';
+  }
+
+  if(!option_change){
+     modalAddBtn.textContent = 'Add to cart';
   }
 }
 
