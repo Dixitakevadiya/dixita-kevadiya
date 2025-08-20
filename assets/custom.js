@@ -148,19 +148,12 @@ product.options.forEach((optName, idx) => {
     }
   });
 
-  // ✅ Check length
-  console.log("selectedValues:", selectedValues);
-
   if (selectedValues.length === product.options.length) {
-    console.log("✅ All options selected:", selectedValues);
-    // here you can find the correct variant
     const matchedVariant = product.variants.find(v =>
       v.options.every((opt, i) => opt === selectedValues[i])
     );
-    console.log("Matched Variant:", matchedVariant);
     return matchedVariant;
   } else {
-    console.log("⚠️ Not all options selected yet.");
     return null;
   }
 
