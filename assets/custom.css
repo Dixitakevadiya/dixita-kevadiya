@@ -294,6 +294,7 @@ img, svg{
     height: 12px;
     width: 12px;
     cursor: pointer;
+    padding: 0;
 }
 .modal_content_popup {
     display: flex;
