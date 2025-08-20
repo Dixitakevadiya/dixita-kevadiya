@@ -115,7 +115,9 @@ img, svg{
     display: flex;
     place-items: center;
 }
-
+.custom_primary_btn:hover span {
+    position: relative;
+}
 .grid_main_list {
     display: flex;
     flex-wrap: wrap;
