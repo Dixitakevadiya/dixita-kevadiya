@@ -488,6 +488,9 @@ img, svg{
         padding: 25px;
         gap: 16px;
     }
+    .banner_img {
+        padding-top: 70.4%;
+    }
 }
 @media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
