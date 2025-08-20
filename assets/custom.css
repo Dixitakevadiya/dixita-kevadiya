@@ -544,4 +544,7 @@ button.js-modal-add {
 }
 @media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
+  .custom-inner-grid{
+    gap: 4px;
+  }
 }
