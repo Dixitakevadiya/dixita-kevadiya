@@ -499,7 +499,11 @@ button.js-modal-add {
     .header_menu_wpr {
         padding: 0;
     }
-    .header_left,
+    .header_left {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
     .header_right {
         width: 100%;
     }
