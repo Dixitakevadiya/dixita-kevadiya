@@ -24,17 +24,6 @@
                   <div style="width:100%;height:100%;background:#eee;"></div>
                 {% endif %}
               </div>
-              {% comment %} <div class="custom-product-grid_body">
-                <h3 class="custom-product-grid_title">{{ product_obj.title }}</h3>
-                <div class="custom-product-grid_price">
-                  {% if product_obj.compare_at_price_max > product_obj.price %}
-                    <span>{{ product_obj.price | money }}</span>
-                    <s style="color:#999; margin-left:6px;">{{ product_obj.compare_at_price_max | money }}</s>
-                  {% else %}
-                    <span>{{ product_obj.price | money }}</span>
-                  {% endif %}
-                </div>
-              </div> {% endcomment %}
             </div>
           {% endif %}
         {% endif %}
