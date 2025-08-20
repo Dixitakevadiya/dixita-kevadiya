@@ -10,9 +10,10 @@
     {% if section.settings.title != blank %}
       <h2 class="custom-grid_title">{{ section.settings.title }}</h2>
     {% endif %}
-    {% if section.settings.products != blank %}
+    {% if section.blocks.size > 0 %}
     <div class="custom-inner-grid">
-      {% for product in section.settings.products %}
+      {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
         {% if product != blank %}
           {% assign product_obj = product %}
           {% if product_obj %}
