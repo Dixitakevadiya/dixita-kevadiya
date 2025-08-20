@@ -557,7 +557,7 @@ button.js-modal-add {
     }
     .custom-grid_title {
         text-align: center;
-        font-size: 24px;
+        font-size: clamp(24px,7.4vw,32px);
         margin: 0 0 20px;
     }
     .hero_bottom p {
