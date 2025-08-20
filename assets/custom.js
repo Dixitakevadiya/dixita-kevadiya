@@ -127,12 +127,10 @@ function buildOptions(product) {
 
 customModaloptionsWrap.querySelectorAll('.select_wpr').forEach(wpr => {
   const select = wpr.querySelector('select');
-
-  // Click anywhere on wrapper (or arrow) opens select
   wpr.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() !== 'select') {
-      select.focus();   // focuses select
-      select.click();   // opens dropdown
+      select.focus();   
+      select.click();   
     }
   });
 });
