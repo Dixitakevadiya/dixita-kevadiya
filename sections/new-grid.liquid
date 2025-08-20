@@ -91,10 +91,6 @@
       "id": "title", 
       "label": "Title"
     },
-    { "type": "product_list", 
-      "id": "products", 
-      "label": "Products list" 
-    },
     { "type": "product", 
       "id": "gift_product", 
       "label": "Gift product to auto-add" 
@@ -354,7 +350,7 @@ function setVariantFromSelects(product,option_change ) {
   if (el.tagName === 'SELECT') return el.value.toLowerCase();
   if (el.tagName === 'BUTTON' && el.classList.contains('active')) return el.dataset.optionValue.toLowerCase();
   return null;
-}).filter(Boolean);
+  }).filter(Boolean);
   const hasBlack = selected.includes('black');
   const hasMedium = selected.includes('medium');
   if (hasBlack && hasMedium && autoAddJacketHandle) {
