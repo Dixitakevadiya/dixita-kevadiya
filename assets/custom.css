@@ -495,6 +495,15 @@ button.js-modal-add {
         visibility: hidden;
         transition: all 0.3s ease-in-out;
     }
+    .header_logo {
+        width: 100%;
+    }
+    .logo_block {
+        margin: 0 auto;
+    }
+    .header_logo {
+        width: calc(100% - 18px);
+    }
     .banner_img {
         padding-top: 70.4%;
     }
