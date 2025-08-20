@@ -498,6 +498,9 @@ img, svg{
     .banner_inner {
         padding-top: 157px;
     }
+    .banner_content .description{
+        flex: 1;
+    }
     .banner_content {
         max-width: 100%;
         text-align: center;
