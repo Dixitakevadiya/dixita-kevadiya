@@ -19,7 +19,7 @@
     modalDesc = $('.js-modal-desc', modal);
     modalPrice = $('.js-modal-price', modal);
     customModaloptionsWrap = $('.js-modal-options', modal);
-    modalAddBtn = $('.js-modal-add', modal);
+    modalAddBtn = $('.btn_text', modal);
 
     modalCloseBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
