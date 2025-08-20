@@ -146,7 +146,7 @@ function setVariantFromSelects(product,option_change ) {
       if (sel) selectedValues.push(sel.value);
     }
   });
-
+console.log('selectedValues: ', selectedValues)
   const variant_match = product.variants.find(v => v.options.every((val, i) => val === selectedValues[i]));
   if (variant_match) {
     activeVariantId = variant_match.id;
