@@ -99,7 +99,7 @@ function buildOptions(product) {
       // Render other options as dropdown
       group.innerHTML = `
         <label>${optName.name}</label>
-        <div class="select_wpr"><select data-option-index="${idx}"></select></div>
+        <div class="select_wpr"><select class="select_wpr_inner" data-option-index="${idx}"></select></div>
       `;
       const select = $('select', group);
 
