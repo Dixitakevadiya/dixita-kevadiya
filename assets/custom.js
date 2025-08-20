@@ -159,7 +159,7 @@ function setVariantFromSelects(product,option_change ) {
       selectedValues.push(btn.dataset.optionValue);
     } else {
       const sel = $(`[data-option-index="${idx}"]`, customModaloptionsWrap);
-      if (sel.value != '') selectedValues.push(sel.value);
+      if (sel) selectedValues.push(sel.value);
     }
   });
 
