@@ -167,6 +167,9 @@ img, svg{
     opacity: 0;
     scale: 0;
 }
+.toggle_menu {
+    display: none;
+}
 
 
 /* ========== Custom Theme Styles (no Dawn components) ========== */
