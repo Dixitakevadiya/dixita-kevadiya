@@ -150,15 +150,11 @@ function setVariantFromSelects(product,option_change ) {
   });
 
   if (selectedValues.length === product.options.length) {
-    console.log("✅ All options selected:", selectedValues);
-    // here you can find the correct variant
     const matchedVariant = product.variants.find(v =>
       v.options.every((opt, i) => opt === selectedValues[i])
     );
-    console.log("Matched Variant:", matchedVariant);
     return matchedVariant;
   } else {
-    console.log("⚠️ Not all options selected yet.");
     return null;
   }
   const variant_match = product.variants.find(v => v.options.every((val, i) => val === selectedValues[i]));
