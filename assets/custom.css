@@ -132,6 +132,10 @@ img, svg{
     display: flex;
     justify-content: flex-end;
 }
+.custom_header {
+    padding: 10px 0;
+    background: #F5F5F5;
+}
 
 
 /* ========== Custom Theme Styles (no Dawn components) ========== */
