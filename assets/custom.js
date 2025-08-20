@@ -195,7 +195,7 @@ product.options.forEach((optName, idx) => {
     openModal();
   }
 
-    // Add to cart from grid popup
+// Add to cart from grid popup
  async function onAddToCartClicked() {
   if (!activeProduct || !activeVariantId) return;
   const cartNotification = document.querySelector('cart-notification');
@@ -220,7 +220,6 @@ product.options.forEach((optName, idx) => {
       const jacket = await fetchJSON(`/products/${autoAddJacketHandle}.js`);
       const jacketVariant = jacket.variants.find(v => v.available) || jacket.variants[0];
       if (jacketVariant) {
-        // 2. Add gift WITH SECTIONS so response includes both
         response = await fetchJSON('/cart/add.js?sections=cart-notification-product,cart-notification-button,cart-icon-bubble', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
