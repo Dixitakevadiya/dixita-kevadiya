@@ -534,6 +534,13 @@ button.js-modal-add {
     .toggle_menu{
       display: block;
     }
+    .custom_primary_btn {
+        gap: 10px;
+        padding: 13px 20px;
+        line-height: 19px;
+        max-width: 193px;
+        justify-content: space-around;
+    }
 }
 @media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
