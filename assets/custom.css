@@ -480,6 +480,9 @@ img, svg{
 }
 @media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
+  .toggle_menu{
+    display: block;
+  }
 }
 @media (max-width: 475px) {
   .custom-inner-grid { grid-template-columns: 1fr; }
