@@ -283,6 +283,7 @@ img, width{
     line-height: 1.10;
     letter-spacing: -0.14px;
     color: #000000;
+    margin: 0;
 }
 .modal_price {
     font-family: "Lustria", serif;
