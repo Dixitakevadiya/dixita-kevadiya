@@ -541,10 +541,15 @@ button.js-modal-add {
         max-width: 193px;
         justify-content: space-around;
     }
+    .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
+    .custom-inner-grid{
+      gap: 4px;
+    }
+    .custom-grid_title {
+        text-align: center;
+        font-size: 24px;
+        margin: 0 0 20px;
+    }
 }
 @media (max-width: 767px) {
-  .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
-  .custom-inner-grid{
-    gap: 4px;
-  }
 }
