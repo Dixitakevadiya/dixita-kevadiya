@@ -32,6 +32,7 @@
                 
                 {% endif %}
             </div>
+            <div class="on_mobile">
             <a class="custom_primary_btn mob_only" href="{{ section.settings.btn_url | default: '#' }}">
                     <span>{{ section.settings.btn_text }} </span>
                     <span class="btn_arrow">
@@ -40,6 +41,7 @@
                         </svg>
                     </span>
                 </a>
+                </div>
         </div>
         {% if section.settings.btm_text != blank %}
         <div class="hero_bottom">
