@@ -14,7 +14,6 @@
       "name": "New Banner",
       "settings": {
         "img": "shopify://shop_images/banner.png",
-        "mob_img": "shopify://shop_images/mobile_banner.png",
         "title": "The Gift Guide",
         "desc": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
         "btn_text": "Shop Now",
@@ -26,14 +25,15 @@
       "name": "Product Grid",
       "settings": {
         "title": "Tisso vison in the wild",
-        "product": [
-          "silk-summer-top",
-          "dark-winter-jacket",
-          "striped-silk-blouse",
-          "striped-skirt-and-top",
-          "dark-denim-top",
-          "classic-varsity-top"
-        ]
+        "products": [
+          "chequered-red-shirt",
+          "classic-leather-jacket",
+          "classic-varsity-top",
+          "led-high-tops",
+          "floral-white-top",
+          "dark-denim-top"
+        ],
+        "gift_product": "chequered-red-shirt"
       }
     }
   },
