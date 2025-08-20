@@ -118,6 +118,20 @@ img, svg{
     width: 100%;
 }
 
+.header_menu p {
+    color: #000000;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 14px;
+    margin: 0;
+}
+.header_menu p {
+    color: #000000;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 14px;
+    margin: 0;
+}
 
 
 /* ========== Custom Theme Styles (no Dawn components) ========== */

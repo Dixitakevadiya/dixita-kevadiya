@@ -372,7 +372,7 @@ function setVariantFromSelects(product,option_change ) {
   function initProductTiles() {
     $$('.custom-grid').forEach(section => {
       const jacketHandle = section?.dataset?.autoAddJacketHandle || '';
-      $$('.custom-product-grid', section).forEach(tile => {
+      $$('.dot_pos', section).forEach(tile => {
         tile.addEventListener('click', (e) => {
           e.preventDefault();
           const handle = tile.getAttribute('data-handle');
