@@ -284,8 +284,15 @@ img, svg{
   overflow: hidden;
  position: relative;
 }
+.gift_btn {
+    padding: 12px;
+}
 .header_right {
     width: 33.33%;
+}
+.header_btn {
+    display: flex;
+    justify-content: flex-end;
 }
 .custom-product-grid_body { padding: 12px; }
 .custom-product-grid_title { font-size: 16px; font-weight: 600; margin: 0 0 8px; }
