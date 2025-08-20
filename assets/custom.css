@@ -477,6 +477,17 @@ img, svg{
     .banner_img .mob_only{
         display: block;
     }
+    .header_inner {
+        position: fixed;
+        flex-direction: column;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        background: #F2F2F2;
+        padding: 25px;
+        gap: 16px;
+    }
 }
 @media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
