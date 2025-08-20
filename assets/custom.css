@@ -488,19 +488,13 @@ button.js-modal-add {
         display: block;
     }
     .header_inner {
-        position: fixed;
         flex-direction: column;
-        top: 0;
         width: 100%;
-        left: 0;
-        right: 0;
         background: #f2f2f2;
-        padding: 25px;
+        padding: 25px 0;
         gap: 16px;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease-in-out;
+        transition: all .3s ease-in-out;
+        margin-top: 19px;
     }
     .header_logo {
         width: 100%;
