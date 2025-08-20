@@ -461,6 +461,10 @@ img, svg{
 button.js-modal-add {
     max-width: 100%;
 }
+.option-btn.active {
+    background: #000;
+    color: #fff;
+}
 /* ===== Responsive ===== */
 @media (max-width: 1280px){
     .banner_content {
