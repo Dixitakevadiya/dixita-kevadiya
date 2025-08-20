@@ -29,7 +29,10 @@
                         </svg>
                     </span>
                 </a>
-                <a class="custom_primary_btn mob_only" href="{{ section.settings.btn_url | default: '#' }}">
+                
+                {% endif %}
+            </div>
+            <a class="custom_primary_btn mob_only" href="{{ section.settings.btn_url | default: '#' }}">
                     <span>{{ section.settings.btn_text }} </span>
                     <span class="btn_arrow">
                         <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,8 +40,6 @@
                         </svg>
                     </span>
                 </a>
-                {% endif %}
-            </div>
         </div>
         {% if section.settings.btm_text != blank %}
         <div class="hero_bottom">
