@@ -163,14 +163,6 @@ function setVariantFromSelects(product,option_change ) {
     }
   });
 
-  if (selectedValues.length === product.options.length) {
-    const matchedVariant = product.variants.find(v =>
-      v.options.every((opt, i) => opt === selectedValues[i])
-    );
-    return matchedVariant;
-  } else {
-    return null;
-  }
   const variant_match = product.variants.find(v => v.options.every((val, i) => val === selectedValues[i]));
   if (variant_match) {
     activeVariantId = variant_match.id;
