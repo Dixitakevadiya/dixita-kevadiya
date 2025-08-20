@@ -1,75 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "new_banner_bwhbeA": {
+      "type": "new-banner",
+      "name": "New Banner",
+      "settings": {
+        "img": "shopify://shop_images/banner.png",
+        "mob_img": "shopify://shop_images/mobile_banner_5243687e-f422-4ea3-92c3-6a07db15527b.png",
+        "title": "The Gift Guide",
+        "desc": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "btn_text": "Shop Now",
+        "btn_url": "",
+        "btm_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      }
+    },
+    "new_grid_NJWjiE": {
+      "type": "new-grid",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "product_block_3TXJpG": {
+          "type": "product_block",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "product": "blue-silk-tuxedo",
+            "overlay_left": 51,
+            "overlay_top": 59
           }
         },
-        "button": {
-          "type": "buttons",
+        "product_block_PXYHFG": {
+          "type": "product_block",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "product": "chequered-red-shirt",
+            "overlay_left": 63,
+            "overlay_top": 20
+          }
+        },
+        "product_block_mHkcTe": {
+          "type": "product_block",
+          "settings": {
+            "product": "classic-varsity-top",
+            "overlay_left": 58,
+            "overlay_top": 43
+          }
+        },
+        "product_block_NFLRAV": {
+          "type": "product_block",
+          "settings": {
+            "product": "dark-denim-top",
+            "overlay_left": 40,
+            "overlay_top": 51
+          }
+        },
+        "product_block_3XNG8a": {
+          "type": "product_block",
+          "settings": {
+            "product": "led-high-tops",
+            "overlay_left": 48,
+            "overlay_top": 65
+          }
+        },
+        "product_block_rKerCj": {
+          "type": "product_block",
+          "settings": {
+            "product": "red-sports-tee",
+            "overlay_left": 52,
+            "overlay_top": 43
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "product_block_3TXJpG",
+        "product_block_PXYHFG",
+        "product_block_mHkcTe",
+        "product_block_NFLRAV",
+        "product_block_3XNG8a",
+        "product_block_rKerCj"
       ],
+      "name": "Product Grid",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "title": "Tisso vison in the wild",
+        "gift_product": "chequered-red-shirt"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "new_banner_bwhbeA",
+    "new_grid_NJWjiE"
   ]
 }

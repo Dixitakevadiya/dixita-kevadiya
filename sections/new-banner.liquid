@@ -1,0 +1,100 @@
+{% comment %}
+  Custom Banne Section
+{% endcomment %}
+
+<div class="banner_wrapper">
+    <div class="banner_inner">
+        {% if section.settings.img != blank %}
+        <div class="banner_img">
+            <img src="{{ section.settings.img | img_url: 'master' }}" alt="{{ section.settings.img.alt }}" class="desktop_only">
+            {% if section.settings.mob_img != blank %}
+            <img src="{{ section.settings.mob_img | img_url: 'master' }}" alt="{{ section.settings.mob_img.alt }}" class="mob_only">
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="container">
+            <div class="banner_content">
+                {% if section.settings.title != blank %}
+                <h2 class="title">{{ section.settings.title }}</h2>
+                {% endif %}
+                {% if section.settings.desc != blank %}
+                <p class="description">
+                    {{ section.settings.desc }}
+                </p>
+                <a class="custom_primary_btn desk_only" href="{{ section.settings.btn_url | default: '#' }}">
+                    <span>{{ section.settings.btn_text }} </span>
+                    <span class="btn_arrow">
+                        <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                </a>
+                
+                {% endif %}
+            </div>
+            <div class="on_mobile">
+            <a class="custom_primary_btn mob_only" href="{{ section.settings.btn_url | default: '#' }}">
+                    <span>{{ section.settings.btn_text }} </span>
+                    <span class="btn_arrow">
+                        <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                </a>
+                </div>
+        </div>
+        {% if section.settings.btm_text != blank %}
+        <div class="hero_bottom">
+            <p>{{ section.settings.btm_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "New Banner",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Desktop Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mob_img",
+            "label": " Mobile Image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "desc",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button Text"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button URL"
+        },
+        {
+            "type": "text",
+            "id": "btm_text",
+            "label": "Bottom text"
+        }
+    ],
+    "presets": [
+        {
+         "name": "New Banner"
+        }
+    ]
+}
+{% endschema %}

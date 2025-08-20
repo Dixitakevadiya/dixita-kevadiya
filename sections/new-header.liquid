@@ -1,0 +1,96 @@
+<header class="custom_header">
+  <div class="container">
+    <div class="custom_header_wpr">
+      <div class="header_left">
+        <div class="toggle_menu">
+          <a href="#">
+            <span class="toggle_btn">
+              <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 6.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 1.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 11.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="toggle_close">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 13.9997L13.7279 1.27177" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 1.00031L13.7279 13.7282" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div class="header_logo">
+          <a href="{{ routes.root_url }}" class="logo_block">
+            {% if section.settings.logo != blank %}
+              <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+            {% else %}
+              {{ shop.name }}
+            {% endif %}
+          </a> 
+        </div>
+      </div>
+
+      <div class="header_inner">
+        {% if section.settings.menu_text != blank %}
+        <div class="header_menu_wpr">
+          <div class="header_menu">
+            <p>{{ section.settings.menu_text }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% if section.settings.button_text != blank %}
+        <div class="header_right">
+          <div class="header_btn">
+            <a href="{{ section.settings.button_link | default: '#' }}" class="custom_primary_btn gift_btn">
+              <span>{{ section.settings.button_text }}</span>
+              <span class="btn_arrow">
+                <svg width="26" height="12" viewBox="0 0 26 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.22205 4.80469L0.472046 4.80469L0.472046 6.30469L1.22205 6.30469L1.22205 4.80469ZM25.7524 6.08502C26.0453 5.79213 26.0453 5.31725 25.7524 5.02436L20.9794 0.251388C20.6865 -0.0415053 20.2116 -0.0415053 19.9187 0.251388C19.6259 0.544281 19.6259 1.01916 19.9187 1.31205L24.1614 5.55469L19.9187 9.79733C19.6259 10.0902 19.6259 10.5651 19.9187 10.858C20.2116 11.1509 20.6865 11.1509 20.9794 10.858L25.7524 6.08502ZM1.22205 6.30469L25.222 6.30469L25.222 4.80469L1.22205 4.80469L1.22205 6.30469Z" fill="currentColor"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+
+
+{% schema %}
+{
+  "name": "Custom Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "menu_text",
+      "label": "Menu Text",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "choose gift"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Header",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}

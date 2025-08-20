@@ -1,0 +1,95 @@
+{% comment %}
+  Custom Product Grid (from scratch)
+  - Exactly 6 product tiles (selectable in customizer).
+  - Clicking a tile opens a vanilla JS modal with dynamic variants & Add to Cart.
+  - If selected options Black & Medium: auto-add the Bonus Product ("Soft Winter Jacket") from settings.
+{% endcomment %}
+
+<section class="custom-grid" data-auto-add-jacket-handle="{{ section.settings.gift_product | default: '' | handle }}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="custom-grid_title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+    <div class="custom-inner-grid">
+      {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
+        {% if product != blank %}
+          {% assign product_obj = product %}
+          {% if product_obj %}
+            <div class="custom-product-grid" data-handle="{{ product_obj.handle }}" aria-label="{{ product_obj.title }}">
+              <div class="custom-product-grid_image">
+                {% if product_obj.featured_image %}
+                  <img src="{{ product_obj.featured_image | image_url: width: 600 }}" alt="{{ product_obj.title | escape }}">
+                {% else %}
+                  <div style="width:100%;height:100%;background:#eee;"></div>
+                {% endif %}
+                <div class="dot_pos" style="left:{{ block.settings.overlay_left }}%;top:{{ block.settings. overlay_top}}%;">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="11" fill="#F8F8F8" fill-opacity="0.9"/>
+                  <path d="M11.3457 7.04175V15.5033" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  <path d="M7.11523 11.2725H15.5768" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% render 'product-quick' %}
+</section>
+
+{% schema %}
+{
+  "name": "Custom Product Grid",
+  "class": "section-custom-grid",
+  "settings": [
+    { "type": "text", 
+      "id": "title", 
+      "label": "Title"
+    },
+    { "type": "product", 
+      "id": "gift_product", 
+      "label": "Gift product to auto-add" 
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_block",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select product"
+        },
+        {
+          "type": "range",
+          "id": "overlay_left",
+          "label": "Left Position",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "overlay_top",
+          "label": "Top Position",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 1
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Custom Product Grid" }]
+}
+{% endschema %}
