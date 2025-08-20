@@ -409,8 +409,9 @@ img, svg{
     flex-wrap: wrap;
     align-items: center;
 }
-.header_col {
-    width: 33.33%;
+.header_menu_wpr {
+    flex: 1;
+    padding: 0 10px;
 }
 
 /* ===== Responsive ===== */
