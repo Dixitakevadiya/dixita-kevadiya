@@ -495,6 +495,7 @@ button.js-modal-add {
         gap: 16px;
         transition: all .3s ease-in-out;
         margin-top: 19px;
+        display: none;
     }
     .header_menu_wpr {
         padding: 0;
