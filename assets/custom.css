@@ -83,6 +83,11 @@ img, svg{
     inset: 0;
     transition: all 0.3s ease-in-out;
 }
+.dot_pos {
+    position: absolute;
+    height: 22px;
+    width: 22px;
+}
 .custom_primary_btn:hover{
   border-color: #000;
   color: #000;
@@ -277,6 +282,7 @@ img, svg{
   display: grid;
   place-items: center; 
   overflow: hidden;
+position: relative;
 }
 .custom-product-grid_body { padding: 12px; }
 .custom-product-grid_title { font-size: 16px; font-weight: 600; margin: 0 0 8px; }
