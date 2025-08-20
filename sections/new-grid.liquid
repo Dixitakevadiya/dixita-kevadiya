@@ -362,7 +362,10 @@ function setVariantFromSelects(product,option_change ) {
 
 
   modalAddBtn.textContent = 'Added!';
-    setTimeout(() => { closeModal(); location.reload(); }, 500);
+    setTimeout(() => {
+    closeModal();
+    window.location.href = '/cart';
+  }, 500);
 
 }
 
