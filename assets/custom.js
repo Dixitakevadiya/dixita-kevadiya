@@ -140,9 +140,11 @@ function setVariantFromSelects(product,option_change ) {
   product.options.forEach((optName, idx) => {
     const btn = $(`.option-btn.active[data-option-index="${idx}"]`, customModaloptionsWrap);
     if (btn) {
+      console.log('btn.dataset.optionValue: ', btn.dataset.optionValue)
       selectedValues.push(btn.dataset.optionValue);
     } else {
       const sel = $(`[data-option-index="${idx}"]`, customModaloptionsWrap);
+      console.log('sel.value: ', sel.value)
       if (sel) selectedValues.push(sel.value);
     }
   });
