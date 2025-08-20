@@ -553,6 +553,9 @@ button.js-modal-add {
     .hero_bottom p {
         font-size: 14px;
     }
+    .custom-grid{
+        padding: 40px 0;
+    }
 }
 @media (max-width: 767px) {
 }
