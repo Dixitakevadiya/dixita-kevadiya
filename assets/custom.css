@@ -502,8 +502,12 @@ img, svg{
         max-width: 100%;
         text-align: center;
         left: 0;
-        padding: 0 16px;
-        bottom: 73px;
+        padding: 49px 16px 39px;
+        bottom: 34px;
+        height: calc(100%  - 34px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 @media (max-width: 767px) {
