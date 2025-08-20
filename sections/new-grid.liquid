@@ -300,7 +300,6 @@ function setVariantFromSelects(product,option_change ) {
   }
 }
 
-
   async function openProductPopupByHandle(handle, jacketHandleFromSection) {
     autoAddJacketHandle = jacketHandleFromSection || null;
     const product = await fetchJSON(`/products/${handle}.js`);
@@ -368,8 +367,7 @@ function setVariantFromSelects(product,option_change ) {
 
 }
 
-
-  function initProductTiles() {
+  function initProductTiles() { 
   $$('.custom-grid').forEach(section => {
     const jacketHandle = section?.dataset?.autoAddJacketHandle || '';
     $$('.custom-product-grid', section).forEach(tile => {
@@ -386,7 +384,6 @@ function setVariantFromSelects(product,option_change ) {
     });
   });
 }
-
 
   document.addEventListener('DOMContentLoaded', () => {
     initModal();
