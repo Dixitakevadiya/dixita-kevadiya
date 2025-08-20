@@ -566,6 +566,10 @@ button.js-modal-add {
     .custom-grid{
         padding: 40px 0;
     }
+    .dot_pos {
+        width: 15px;
+        height: 15px;
+    }
     .banner_content .custom_primary_btn {
         display: none;
     }
