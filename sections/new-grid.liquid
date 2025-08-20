@@ -342,7 +342,7 @@ function setVariantFromSelects(product,option_change ) {
   return null;
   }).filter(Boolean);
   const hasBlack = selected.includes('black');
-  const hasMedium = selected.includes('medium');
+  const hasMedium = selected.includes('m');
   if (hasBlack && hasMedium && autoAddJacketHandle) {
     try {
       const jacket = await fetchJSON(`/products/${autoAddJacketHandle}.js`);
