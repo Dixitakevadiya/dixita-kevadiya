@@ -60,10 +60,10 @@
       "type": "new-header",
       "name": "New Header",
       "settings": {
-        "title": "",
-        "desc": "",
-        "btn_text": "",
-        "btn_url": ""
+        "logo": "shopify://shop_images/logo.png",
+        "menu_text": "Find the ideal gift for your loved ones.",
+        "button_text": "choose gift",
+        "button_link": "shopify://collections/all"
       }
     }
   },
