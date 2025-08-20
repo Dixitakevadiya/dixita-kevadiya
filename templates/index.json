@@ -30,22 +30,59 @@
             "overlay_left": 51,
             "overlay_top": 25
           }
+        },
+        "product_block_PXYHFG": {
+          "type": "product_block",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "overlay_left": 14,
+            "overlay_top": 20
+          }
+        },
+        "product_block_mHkcTe": {
+          "type": "product_block",
+          "settings": {
+            "product": "classic-varsity-top",
+            "overlay_left": 72,
+            "overlay_top": 43
+          }
+        },
+        "product_block_NFLRAV": {
+          "type": "product_block",
+          "settings": {
+            "product": "dark-denim-top",
+            "overlay_left": 40,
+            "overlay_top": 38
+          }
+        },
+        "product_block_3XNG8a": {
+          "type": "product_block",
+          "settings": {
+            "product": "led-high-tops",
+            "overlay_left": 33,
+            "overlay_top": 55
+          }
+        },
+        "product_block_rKerCj": {
+          "type": "product_block",
+          "settings": {
+            "product": "red-sports-tee",
+            "overlay_left": 52,
+            "overlay_top": 43
+          }
         }
       },
       "block_order": [
-        "product_block_3TXJpG"
+        "product_block_3TXJpG",
+        "product_block_PXYHFG",
+        "product_block_mHkcTe",
+        "product_block_NFLRAV",
+        "product_block_3XNG8a",
+        "product_block_rKerCj"
       ],
       "name": "Product Grid",
       "settings": {
         "title": "Tisso vison in the wild",
-        "products": [
-          "chequered-red-shirt",
-          "classic-leather-jacket",
-          "classic-varsity-top",
-          "led-high-tops",
-          "floral-white-top",
-          "dark-denim-top"
-        ],
         "gift_product": "chequered-red-shirt"
       }
     }
