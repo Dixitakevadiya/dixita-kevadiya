@@ -349,7 +349,7 @@ img, width{
     width: 5px;
     top: 0;
     left: 0;
-    background: red;
+    background: var(--option-value);
     border: 1px solid #000000;
 }
 .option-btn:not(:nth-child(-n+2)) {
