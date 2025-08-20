@@ -85,6 +85,7 @@ img, width{
     font-weight: 400;
     font-size: 16px;
     line-height: 13px;
+    margin: 0;
 }
 .custom_primary_btn span svg {
     height: 100%;
