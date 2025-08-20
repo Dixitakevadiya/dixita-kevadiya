@@ -99,7 +99,7 @@ function buildOptions(product) {
       // Render other options as dropdown
       group.innerHTML = `
         <label>${optName.name}</label>
-        <div class="select_wpr"><select class="select_wpr_inner" data-option-index="${idx}"></select></div>
+        <div class="select_wpr"><select data-option-index="${idx}"></select></div>
       `;
       const select = $('select', group);
 
@@ -120,24 +120,8 @@ function buildOptions(product) {
         select.appendChild(option);
       });
 
-     // Assuming your structure is like:
-// <div class="select_wpr">
-//   <select>...</select>
-//   <span class="arrow"></span>
-// </div>
-
-customModaloptionsWrap.querySelectorAll('.select_wpr').forEach(wpr => {
-  const select = wpr.querySelector('select');
-
-  // Click anywhere on wrapper (or arrow) opens select
-  wpr.addEventListener('click', (e) => {
-    if (e.target.tagName.toLowerCase() !== 'select') {
-      select.focus();   // focuses select
-      select.click();   // opens dropdown
-    }
-  });
-});
-
+      select.addEventListener('change', onOptionChange);
+      customModaloptionsWrap.appendChild(group);
     }
 
   });
@@ -162,7 +146,7 @@ function setVariantFromSelects(product,option_change ) {
       if (sel) selectedValues.push(sel.value);
     }
   });
-
+console.log('selectedValues: ', selectedValues)
   const variant_match = product.variants.find(v => v.options.every((val, i) => val === selectedValues[i]));
   if (variant_match) {
     activeVariantId = variant_match.id;
