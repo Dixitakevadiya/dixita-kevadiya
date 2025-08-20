@@ -560,6 +560,9 @@ button.js-modal-add {
     .custom-grid{
         padding: 40px 0;
     }
+    .banner_content .custom_primary_btn {
+        display: none;
+    }
 }
 @media (max-width: 767px) {
 }
