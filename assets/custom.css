@@ -463,6 +463,10 @@ img, svg{
     .banner_content {
         left: 16px;
     }
+    .banner_content .title,
+    .banner_content .description {
+        margin: 0 0 24px;
+    }
 }
 @media (max-width: 960px) {
   .custom-banner_inner { grid-template-columns: 1fr; }
