@@ -504,6 +504,9 @@ button.js-modal-add {
     .header_logo {
         width: calc(100% - 18px);
     }
+    .custom_header {
+        padding: 23px 0;
+    }
     .banner_img {
         padding-top: 70.4%;
     }
