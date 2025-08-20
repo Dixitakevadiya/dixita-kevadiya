@@ -496,7 +496,11 @@ button.js-modal-add {
         transition: all .3s ease-in-out;
         margin-top: 19px;
     }
-    .header_logo {
+    .header_menu_wpr {
+        padding: 0;
+    }
+    .header_logo,
+    .header_right {
         width: 100%;
     }
     .logo_block {
