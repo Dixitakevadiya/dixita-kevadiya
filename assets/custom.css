@@ -503,6 +503,13 @@ button.js-modal-add {
     .header_right {
         width: 100%;
     }
+    .header_btn .custom_primary_btn {
+        background: #FFF544;
+        color: #000;
+    }
+    .header_btn {
+        justify-content: center;
+    }
     .logo_block {
         margin: 0 auto;
     }
