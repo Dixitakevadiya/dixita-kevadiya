@@ -144,6 +144,12 @@ img, svg{
 .header_menu {
     text-align: center;
 }
+.header_inner {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    align-items: center;
+}
 .custom_header {
     padding: 10px 0;
     background: #F5F5F5;
