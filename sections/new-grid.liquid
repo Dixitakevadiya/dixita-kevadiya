@@ -140,7 +140,8 @@
     document.querySelectorAll('.option-btn').forEach(btn => {
     const val = btn.getAttribute('data-option-value');
     btn.style.setProperty('--option-value', `${val}`);
-});
+  });
+  modalAddBtn.textContent = 'Add to cart';
     if (focusTrapEls.length) focusTrapEls[0].focus();
     modal.addEventListener('keydown', trapTab);
   }
