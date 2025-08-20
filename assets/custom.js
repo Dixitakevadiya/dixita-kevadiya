@@ -120,9 +120,23 @@ function buildOptions(product) {
         select.appendChild(option);
       });
 
-      select.addEventListener('change', onOptionChange);
-      customModaloptionsWrap.appendChild(group);
+      // Assuming your structure is like:
+// <div class="select_wpr">
+//   <select>...</select>
+//   <span class="arrow"></span>
+// </div>
+
+customModaloptionsWrap.querySelectorAll('.select_wpr').forEach(wpr => {
+  const select = wpr.querySelector('select');
+
+  // Click anywhere on wrapper (or arrow) opens select
+  wpr.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() !== 'select') {
+      select.focus();   // focuses select
+      select.click();   // opens dropdown
     }
+  });
+});
 
   });
 
