@@ -468,13 +468,13 @@ img, svg{
         margin: 0 0 24px;
     }
 }
-@media (max-width: 960px) {
-  .custom-banner_inner { grid-template-columns: 1fr; }
-  .modal_content_popup { grid-template-columns: 1fr; }
+@media (max-width: 850px){
+    .custom-banner_inner { grid-template-columns: 1fr; }
+    .modal_content_popup { grid-template-columns: 1fr; }
 }
-@media (max-width: 720px) {
+@media (max-width: 767px) {
   .custom-inner-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 420px) {
+@media (max-width: 475px) {
   .custom-inner-grid { grid-template-columns: 1fr; }
 }
