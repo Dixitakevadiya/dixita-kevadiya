@@ -459,6 +459,11 @@ img, svg{
     flex-direction: column-reverse;
 }
 /* ===== Responsive ===== */
+@media (max-width: 1280px){
+    .banner_content {
+        left: 16px;
+    }
+}
 @media (max-width: 960px) {
   .custom-banner_inner { grid-template-columns: 1fr; }
   .modal_content_popup { grid-template-columns: 1fr; }
