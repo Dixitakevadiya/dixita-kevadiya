@@ -125,12 +125,12 @@ img, svg{
     line-height: 14px;
     margin: 0;
 }
-.header_menu p {
-    color: #000000;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 14px;
-    margin: 0;
+.header_menu {
+    text-align: center;
+}
+.header_btn {
+    display: flex;
+    justify-content: flex-end;
 }
 
 
