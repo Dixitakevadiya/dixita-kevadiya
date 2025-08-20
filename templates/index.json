@@ -22,6 +22,19 @@
     },
     "new_grid_NJWjiE": {
       "type": "new-grid",
+      "blocks": {
+        "product_block_3TXJpG": {
+          "type": "product_block",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "overlay_left": 51,
+            "overlay_top": 25
+          }
+        }
+      },
+      "block_order": [
+        "product_block_3TXJpG"
+      ],
       "name": "Product Grid",
       "settings": {
         "title": "Tisso vison in the wild",
