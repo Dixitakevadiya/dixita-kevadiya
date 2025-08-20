@@ -370,17 +370,27 @@ function setVariantFromSelects(product,option_change ) {
 
 
   function initProductTiles() {
-    $$('.custom-grid').forEach(section => {
-      const jacketHandle = section?.dataset?.autoAddJacketHandle || '';
-      $$('.dot_pos', section).forEach(tile => {
-        tile.addEventListener('click', (e) => {
+  $$('.custom-grid').forEach(section => {
+    const jacketHandle = section?.dataset?.autoAddJacketHandle || '';
+
+    // Loop through each product tile
+    $$('.custom-product-grid', section).forEach(tile => {
+      const handle = tile.getAttribute('data-handle');
+
+      // Attach event only on .dot_pos inside the tile
+      $$('.dot_pos', tile).forEach(dot => {
+        dot.addEventListener('click', (e) => {
           e.preventDefault();
-          const handle = tile.getAttribute('data-handle');
-          if (handle) openProductPopupByHandle(handle, jacketHandle);
+          e.stopPropagation(); // prevent parent tile click
+          if (handle) {
+            openProductPopupByHandle(handle, jacketHandle);
+          }
         });
       });
     });
-  }
+  });
+}
+
 
   document.addEventListener('DOMContentLoaded', () => {
     initModal();
