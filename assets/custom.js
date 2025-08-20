@@ -192,7 +192,6 @@ function setVariantFromSelects(product,option_change ) {
   if (!activeProduct || !activeVariantId) return;
   const cartNotification = document.querySelector('cart-notification');
 
-  // 1. Add main product (with sections)
   let response = await fetchJSON('/cart/add.js?sections=cart-notification-product,cart-notification-button,cart-icon-bubble', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
