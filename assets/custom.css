@@ -282,7 +282,7 @@ img, svg{
   display: grid;
   place-items: center; 
   overflow: hidden;
-position: relative;
+ position: relative;
 }
 .custom-product-grid_body { padding: 12px; }
 .custom-product-grid_title { font-size: 16px; font-weight: 600; margin: 0 0 8px; }
