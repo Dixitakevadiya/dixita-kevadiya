@@ -137,6 +137,10 @@
     modal.classList.add('modal--open');
     // focus trap
     focusTrapEls = $$('a, button, select, input, [tabindex]:not([tabindex="-1"])', modalDialog).filter(el => !el.disabled);
+    document.querySelectorAll('.option-btn').forEach(btn => {
+    const val = btn.getAttribute('data-option-value');
+    btn.style.setProperty('--option-value', `${val}`);
+});
     if (focusTrapEls.length) focusTrapEls[0].focus();
     modal.addEventListener('keydown', trapTab);
   }
