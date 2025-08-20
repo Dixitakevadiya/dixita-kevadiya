@@ -110,7 +110,7 @@ img, svg{
 .custom_primary_btn span svg path{
     transition: all .3s ease-in-out;
 }
-.custom_primary_btn span:not(.btn_arrow) {
+.custom_primary_btn span.btn_arrow {
     width: 26px;
     display: flex;
     place-items: center;
