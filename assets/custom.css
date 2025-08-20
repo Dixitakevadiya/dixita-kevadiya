@@ -31,12 +31,15 @@ img, svg{
 .modal_image img {
     aspect-ratio: 16 / 18.67;
 }
-.banner_content {
+.banner_content_wpr {
     position: absolute;
     bottom: 51px;
     width: 100%;
-    max-width: 33.6%;
-    left: 67px;
+    max-width: 93.19%;
+    left: 0;
+    margin: 0 auto;
+    right: 0;
+    padding: 0 16px;
 }
 .banner_content .title {
     color: #000000;
