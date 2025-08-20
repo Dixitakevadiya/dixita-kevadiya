@@ -18,6 +18,9 @@ img, svg{
     padding-top: calc(100dvh - 157px);
     width: 100%;
 }
+.header_logo {
+    width: 33.33%;
+}
 .banner_img img {
     position: absolute;
     inset: 0;
