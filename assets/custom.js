@@ -136,7 +136,6 @@ customModaloptionsWrap.querySelectorAll('.select_wpr').forEach(wpr => {
 });
 
 
-  });
 
   setVariantFromSelects(product);
 }
